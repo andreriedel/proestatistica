@@ -1,0 +1,69 @@
+/* --------------------------------- general -------------------------------- */
+
+.navbar {
+  background: #112349;
+}
+
+.loading-page-box {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.loading-page-box img {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  visibility: hidden;
+}
+
+.loading-field-img {
+  width: 20px;
+  height: 20px;
+  display: relative;
+  visibility: hidden;
+}
+
+.alert-info i {
+  transform: translate(0, 25%);
+}
+
+a[data-bs-toggle="modal"] i {
+  transform: translate(0, 15%);
+}
+
+/* ---------------------------------- index --------------------------------- */
+
+#index-body {
+  background-color: #112349;
+}
+
+/* ------------------------------ sixpackgraphs ----------------------------- */
+
+#modal-grafico-de-prob-norm .modal-body h6 {
+  font-size: 1.15em;
+  text-decoration-line: underline;
+  margin: 15px 0;
+}
+
+/* ---------------------------------- monte --------------------------------- */
+
+input[type="text"] {
+  max-width: 100px;
+}
+
+/* ------------------------------- montegraphs ------------------------------ */
+
+/* REVIEW */
+#mc-result {
+  font-size: 18px;
+  color: #112349;
+  font-weight: 600;
+}

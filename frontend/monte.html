@@ -1,0 +1,533 @@
+<!doctype html>
+
+<html lang="pt-br">
+  
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    
+  </head>
+
+  <body>
+
+    <!-- ----------------------------- navbar ------------------------------ -->
+
+    <nav class="navbar fixed-top navbar-expand-md" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">PROESTATISTICA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="sixpack.html">Gráficos de Controle</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="anova.html">ANOVA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="regression.html">Análise de Regressão</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="monte.html">Monte Carlo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ----------------------- conteúdo da página ------------------------ -->
+
+    <!-- container da página -->
+    <div class="container-fluid mt-5 p-4">
+
+      <!-- formulário -->
+      <form action="" id="monte-form">
+
+        <!-- ----------------- row para arquivo e planilha ----------------- -->
+
+        <div class="row">
+
+          <!-- -------------------------- arquivo -------------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo arquivo -->
+            <h3>
+              Selecione o arquivo:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-file"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-file">
+            </h3>
+
+            <!-- modal info arquivo -->
+            <div class="modal fade" id="modal-file" tabindex="-1" aria-labelledby="modal-label-file" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-file">Selecionar arquivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Aqui você deve selecionar um arquivo excel. Normalmente
+                      esse tipo de arquivo possui a extensão .xls, .xlsx, entre
+                      outras.
+                    </p>
+                    <img src="imgs/file-info.png" class="img-thumbnail" alt="File info">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <div class="input-group">
+              <input type="file" class="form-control" id="mc-file" aria-describedby="" aria-label="Upload" disabled>
+            </div>
+
+          </div>
+
+          <!-- ------------------------- planilha -------------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo planilha -->
+            <h3>
+              Selecione a planilha (aba):
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-sheet"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-sheet">
+            </h3>
+            
+            <!-- modal info planilha -->
+            <div class="modal fade" id="modal-sheet" tabindex="-1" aria-labelledby="modal-label-sheet" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-sheet">Selecionar planilha (aba)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Aqui você deve selecionar a planilha utilizada. As
+                      planilhas são as abas da parte inferior da pasta de
+                      trabalho (arquivo excel).
+                    </p>                    
+                    <img src="imgs/sheet-info.jpg" class="img-thumbnail" alt="Sheet info">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="mc-sheet" aria-label="" disabled>
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- -------------------- row para subprocessos -------------------- -->
+
+        <div class="row">
+
+          <!-- ------------------ coluna dos subprocessos ------------------ -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo coluna dos subprocessos -->
+            <h3>
+              Selecione a coluna dos subprocessos:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subprocesses-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos subprocessos -->
+            <div class="modal fade" id="modal-subprocesses-col" tabindex="-1" aria-labelledby="modal-label-subprocesses-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subprocesses-col">Selecionar coluna dos subprocessos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    subprocessos.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="mc-subprocesses-col" aria-label="" disabled>
+            </select>
+
+          </div>
+
+          <!-- ----------------------- subprocessos ------------------------ -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo subprocessos -->
+            <h3>
+              Selecione os subprocessos envolvidos:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subprocesses"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-subprocesses">
+            </h3>
+
+            <!-- modal info subprocessos -->
+            <div class="modal fade" id="modal-subprocesses" tabindex="-1" aria-labelledby="modal-label-subprocesses" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subprocesses">Selecionar subprocessos envolvidos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar os subprocessos que serão
+                    utilizados na simulação.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <button type="button" class="btn btn-primary" id="mc-subprocesses-btn" data-bs-toggle="modal" data-bs-target="#modal-subprocesses-btn" disabled>
+              Selecionar subprocessos
+            </button>
+
+            <!-- modal subprocessos btn -->
+            <div class="modal fade" id="modal-subprocesses-btn" tabindex="-1" aria-labelledby="modal-label-subprocesses-btn" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subprocesses-btn">Selecione os subprocessos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- div para inserir as checkboxes dinamicamente -->
+                    <div id="mc-subprocesses-checkboxes">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Feito</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- --------------------- row para subgrupos ---------------------- -->
+
+        <div class="row">
+
+          <!-- ------------------- coluna dos subgrupos -------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo coluna dos subgrupos -->
+            <h3>
+              Selecione a coluna dos subgrupos:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subgroups-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos subgrupos -->
+            <div class="modal fade" id="modal-subgroups-col" tabindex="-1" aria-labelledby="modal-label-subgroups-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subgroups-col">Selecionar coluna dos subgrupos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    subgrupos.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="mc-subgroups-col" aria-label="" disabled>
+            </select>
+
+          </div>
+
+          <!-- ------------------------- subgrupos ------------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo subgrupos -->
+            <h3>
+              Selecione os subgrupos envolvidos:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subgroups"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-subgroups">
+            </h3>
+
+            <!-- modal info subgrupos -->
+            <div class="modal fade" id="modal-subgroups" tabindex="-1" aria-labelledby="modal-label-subgroups" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subgroups">Selecionar subgrupos envolvidos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar os subgrupos (referentes aos
+                    subprocessos) que serão utilizados na simulação. 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <button type="button" class="btn btn-primary" id="mc-subgroups-btn" data-bs-toggle="modal" data-bs-target="#modal-subgroups-btn" disabled>
+              Selecionar subgrupos
+            </button>
+
+            <!-- modal subgrupos btn -->
+            <div class="modal fade" id="modal-subgroups-btn" tabindex="-1" aria-labelledby="modal-label-subgroups-btn" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subgroups-btn">Selecione os subgrupos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <div class="modal-body">
+                    <div id="mc-subgroups-checkboxes">
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Feito</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ----------------- row para colunas de valores ----------------- -->
+        
+        <div class="row">
+
+          <!-- --------------- coluna dos valores de mínimo ---------------- -->
+
+          <div class="col-md-4 my-3">
+            
+            <!-- título do campo coluna dos valores de mínimo -->
+            <h3>
+              Selecione a coluna dos valores de mínimo:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-min-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos valores de mínimo -->
+            <div class="modal fade" id="modal-min-col" tabindex="-1" aria-labelledby="modal-label-min-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-min-col">Selecionar coluna dos valores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>                  
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    valores de mínimo que serão utilizados na distribuição
+                    triangular da simulação.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="mc-min-col" aria-label="" disabled>
+            </select>
+
+          </div>
+
+          <!-- ---------------- coluna dos valores de média ---------------- -->
+          
+          <div class="col-md-4 my-3">
+
+            <!-- título do campo coluna dos valores de média -->
+            <h3>
+              Selecione a coluna dos valores de média:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-mean-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos valores de média -->
+            <div class="modal fade" id="modal-mean-col" tabindex="-1" aria-labelledby="modal-label-mean-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-mean-col">Selecionar coluna dos valores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>                  
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    valores de média que serão utilizados na distribuição
+                    triangular da simulação.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="mc-mean-col" aria-label="" disabled>
+            </select>
+
+          </div>
+
+          <!-- --------------- coluna dos valores de máximo ---------------- -->
+
+          <div class="col-md-4 my-3">
+            
+            <!-- título do campo coluna dos valores de máximo -->
+            <h3>
+              Selecione a coluna dos valores de máximo:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-max-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos valores de máximo -->
+            <div class="modal fade" id="modal-max-col" tabindex="-1" aria-labelledby="modal-label-max-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-max-col">Selecionar coluna dos valores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    valores de máximo que serão utilizados na distribuição
+                    triangular da simulação.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="mc-max-col" aria-label="" disabled>
+            </select>
+
+          </div>
+          
+        </div>
+
+        <!-- ---------------- row para minimizar/maximizar ----------------- -->
+
+        <div class="row">
+
+          <div class="col-md-12 my-3">
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="minmax" id="mc-minimize" checked>
+              <label class="form-check-label" for="mc-minimize">
+                Minimizar
+              </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="minmax" id="mc-maximize">
+              <label class="form-check-label" for="mc-maximize">
+                Maximizar
+              </label>
+            </div>
+
+            <div class="d-inline-block">
+              <div class="input-group">
+                <input type="text" class="form-control" id="mc-minmaxper" value="5">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr>
+
+        <!-- ----------------------- row para submit ----------------------- -->
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <input type="submit" class="btn btn-success my-3" id="mc-submit" value="Gerar Simulação">            
+          </div>
+        </div>
+
+      <!-- final do formulário -->
+      </form>
+
+      <!-- ---------------------------- alerta ----------------------------- -->
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="alert alert-info mx-auto w-50" role="alert">            
+            <p class="m-0">
+              <i class="material-icons">warning</i>
+              Será gerado a simulação de Monte Carlo
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    <!-- final do container da página -->
+    </div>
+
+    <!-- ------------- gif de loading para envio do formulário ------------- -->
+
+    <div class="loading-page-box">
+      <img src="imgs/loading.gif" alt="loading">
+    </div>
+
+    <!-- ------------------------------------------------------------------- -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="models/MonteModel.js"></script>
+    <script src="views/MonteView.js"></script>
+    <script src="controllers/MonteController.js"></script>
+    <script src="monteIndex.js"></script>
+
+  </body>
+
+</html>

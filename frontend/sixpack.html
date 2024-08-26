@@ -1,0 +1,470 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos de Controle</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+
+  </head>
+
+  <body>
+    
+    <!-- ----------------------------- navbar ------------------------------ -->
+
+    <nav class="navbar fixed-top navbar-expand-md" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">PROESTATISTICA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="sixpack.html">Gráficos de Controle</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="anova.html">ANOVA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="regression.html">Análise de Regressão</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="monte.html">Monte Carlo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ----------------------- conteúdo da página ------------------------ -->
+
+    <!-- container da página -->
+    <div class="container-fluid mt-5 pt-3">
+
+      <!-- formulário -->
+      <form action="" id="sixpack-form">
+
+        <!-- ----------------- row para arquivo e planilha ----------------- -->
+
+        <div class="row">
+
+          <!-- -------------------------- arquivo -------------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo arquivo -->
+            <h3>
+              Selecione o arquivo:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-file"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-file">
+            </h3>
+
+            <!-- modal info arquivo -->
+            <div class="modal fade" id="modal-file" tabindex="-1" aria-labelledby="modal-label-file" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-file">Selecionar arquivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Aqui você deve selecionar um arquivo excel. Normalmente
+                      esse tipo de arquivo possui a extensão .xls, .xlsx, entre
+                      outras.
+                    </p>
+                    <img src="imgs/file-info.png" class="img-thumbnail" alt="File info">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <div class="input-group">
+              <input type="file" class="form-control" id="sp-file" aria-describedby="" aria-label="Upload" disabled>
+            </div>
+
+          </div>
+
+          <!-- ------------------------- planilha -------------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo planilha -->
+            <h3>
+              Selecione a planilha (aba):
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-sheet"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-sheet">
+            </h3>
+            
+            <!-- modal info planilha -->
+            <div class="modal fade" id="modal-sheet" tabindex="-1" aria-labelledby="modal-label-sheet" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-sheet">Selecionar planilha (aba)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Aqui você deve selecionar a planilha utilizada. As
+                      planilhas são as abas da parte inferior da pasta de
+                      trabalho (arquivo excel).
+                    </p>                    
+                    <img src="imgs/sheet-info.jpg" class="img-thumbnail" alt="Sheet info">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="sp-sheet" aria-label="" disabled>
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- --------------------- row para subprocesso -------------------- -->
+
+        <div class="row">
+          
+          <!-- ------------------ coluna dos subprocessos ------------------ -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo coluna dos subprocessos -->
+            <h3>
+              Selecione a coluna dos subprocessos:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subprocesses-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos subprocessos -->
+            <div class="modal fade" id="modal-subprocesses-col" tabindex="-1" aria-labelledby="modal-label-subprocesses-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subprocesses-col">Selecionar coluna dos subprocessos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    subprocessos.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="sp-subprocesses-col" aria-label="" disabled>
+            </select>
+
+          </div>
+
+          <!-- ------------------------ subprocesso ------------------------ -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo subprocesso -->
+            <h3>
+              Selecione o subprocesso envolvido:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subprocess"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-subprocess">
+            </h3>
+
+            <!-- modal info subprocesso -->
+            <div class="modal fade" id="modal-subprocess" tabindex="-1" aria-labelledby="modal-label-subprocess" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subprocess">Selecionar subprocesso envolvido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar o subprocesso que contém o
+                    subgrupo para o qual será feito os gráficos de controle.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="sp-subprocess" aria-label="" disabled>
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- ---------------------- row para subgrupo ---------------------- -->
+
+        <div class="row">
+          
+          <!-- ------------------- coluna dos subgrupos -------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo coluna dos subgrupos -->
+            <h3>
+              Selecione a coluna dos subgrupos:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subgroups-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos subgrupos -->
+            <div class="modal fade" id="modal-subgroups-col" tabindex="-1" aria-labelledby="modal-label-subgroups-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subgroups-col">Selecionar coluna dos subgrupos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    subgrupos.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="sp-subgroups-col" aria-label="" disabled>
+            </select>
+
+          </div>
+
+          <!-- ------------------------- subgrupo -------------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo subgrupo -->
+            <h3>
+              Selecione o subgrupo envolvido:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-subgroup"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img" id="loading-field-img-subgroup">
+            </h3>
+
+            <!-- modal info subgrupos -->
+            <div class="modal fade" id="modal-subgroup" tabindex="-1" aria-labelledby="modal-label-subgroup" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-subgroup">Selecionar subgrupo envolvido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar o subgrupo (referente ao
+                    subprocesso) para o qual será feito os gráficos de controle. 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- campo do formulário -->
+            <select class="form-select" id="sp-subgroup" aria-label="" disabled>
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- ---- row para coluna de valores e limites de especificação ---- -->
+
+        <div class="row">
+
+          <!-- --------------------- coluna de valores --------------------- -->
+
+          <div class="col-md-6 my-3">
+
+            <!-- título do campo  -->
+            <h3>
+              Selecione a coluna dos valores:
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modal-values-col"><i class="material-icons">info</i></a>
+              <img src="imgs/loading.gif" alt="loading" class="loading-field-img loading-field-img-cols">
+            </h3>
+
+            <!-- modal info coluna dos valores -->
+            <div class="modal fade" id="modal-values-col" tabindex="-1" aria-labelledby="modal-label-values-col" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label-values-col">Selecionar coluna dos valores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Aqui você deve selecionar a coluna da planilha que contém os
+                    valores relacionados aos subgrupos que podem ser analisados. 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- campo do formulário -->
+            <select class="form-select" id="sp-values-col" aria-label="" disabled>
+            </select>
+
+          </div>          
+
+          <!-- ----------------- limites de especificação ------------------ -->
+          
+          <div class="col-md-6 my-3">
+
+            <div class="row">
+
+              <!-- ----------- limite inferior de especificação ------------ -->
+
+              <div class="col-md-6 my-3">
+
+                <!-- título do campo limite inferior de especificação -->
+                <h4>
+                  Limite Inferior de Especificação (LIE):
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#modal-lie"><i class="material-icons">info</i></a>
+                </h4>
+
+                <!-- modal info limite inferior de especificação -->
+                <div class="modal fade" id="modal-lie" tabindex="-1" aria-labelledby="modal-label-lie" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modal-label-lie">Limite Inferior de Especificação (LIE)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Aqui você deve inserir o limite inferior de
+                        especificação. O valor deve ser numérico, podendo conter
+                        casas decimais.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- campo do formulário -->
+                <div class="input-group">
+                  <input type="text" class="form-control" id="sp-lie">
+                  <span class="input-group-text">0.0</span>
+                </div>
+                
+              </div> <!-- final da col interna -->
+
+              <!-- ----------- limite superior de especificação ------------ -->
+
+              <div class="col-md-6 my-3">
+
+                <!-- título do campo limite superior de especificação -->
+                <h4>
+                  Limite Superior de Especificação (LSE):
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#modal-lse"><i class="material-icons">info</i></a>
+                </h4>
+
+                <!-- modal info limite superior de especificação -->
+                <div class="modal fade" id="modal-lse" tabindex="-1" aria-labelledby="modal-label-lse" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modal-label-lse">Limite Superior de Especificação (LSE)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Aqui você deve inserir o limite superior de
+                        especificação. O valor deve ser numérico, podendo conter
+                        casas decimais.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- campo do formulário -->
+                <div class="input-group">
+                  <input type="text" class="form-control" id="sp-lse">
+                  <span class="input-group-text">0.0</span>
+                </div>
+
+              </div> <!-- final da col interna -->
+
+            </div> <!-- final da row interna da col -->
+
+          </div> <!-- final da col para limites de especificação -->
+
+        </div> <!-- final da row externa -->
+
+        <hr>
+
+        <!-- ----------------------- row para submit ----------------------- -->
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <input type="submit" class="btn btn-success my-3" id="sp-submit" value="Gerar Gráficos">            
+          </div>
+        </div>
+
+      <!-- final do formulário -->
+      </form>
+
+      <!-- ---------------------------- alerta ----------------------------- -->
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="alert alert-info mx-auto w-50" role="alert">            
+            <p class="m-0">
+              <i class="material-icons">warning</i>
+              Serão gerados 6 gráficos de controle (capability sixpack).
+            </p>
+          </div>
+        </div>
+      </div>
+
+    <!-- final do container da página -->
+    </div>
+
+    <!-- ------------- gif de loading para envio do formulário ------------- -->
+
+    <div class="loading-page-box">
+      <img src="imgs/loading.gif" alt="loading">
+    </div>
+
+    <!-- ------------------------------------------------------------------- -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="models/SixpackModel.js"></script>
+    <script src="views/SixpackView.js"></script>
+    <script src="controllers/SixpackController.js"></script>
+    <script src="sixpackIndex.js"></script>
+
+  </body>
+
+</html>

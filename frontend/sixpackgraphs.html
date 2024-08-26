@@ -1,0 +1,369 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos de Controle</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+
+  </head>
+
+  <body>
+
+    <!-- ----------------------------- navbar ------------------------------ -->
+
+    <nav class="navbar fixed-top navbar-expand-md" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">PROESTATISTICA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="sixpack.html">Gráficos de Controle</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="anova.html">ANOVA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="regression.html">Análise de Regressão</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="monte.html">Monte Carlo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ----------------------- conteúdo da página ------------------------ -->
+
+    <!-- container da página -->
+    <div class="container-fluid mt-5 pt-3 px-4">
+      
+      <!-- ------------------ row para carta i e carta am ------------------ -->
+
+      <div class="row">
+
+        <!-- --------------------------- carta i --------------------------- -->
+
+        <div class="col-lg-6 my-3 text-center">
+
+          <h3>
+            Carta I
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-carta-i"><i class="material-icons">info</i></a>
+          </h3>
+
+          <img src="imgs/sixpack-img-1.png" class="img-thumbnail" alt="...">
+          
+          <!-- modal info carta i -->
+          <div class="modal fade" id="modal-carta-i" tabindex="-1" aria-labelledby="modal-label-carta-i" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-label-carta-i">Carta I</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                  A carta I representa graficamente observações individuais. A
+                  linha central é uma estimativa da média do processo. Os limites
+                  de controle, que são fixados a uma distância de 3 desvios padrão
+                  acima e abaixo da linha central, mostram a quantidade de
+                  variação esperada nos valores de amostras individuais.<br>
+                  <a target="_blank" href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/quality-and-process-improvement/capability-analysis/how-to/capability-sixpack/normal-capability-sixpack/interpret-the-results/all-statistics-and-graphs/graphs/">
+                    Clique aqui para ler mais sobre o gráfico
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- -------------------------- carta am --------------------------- -->
+
+        <div class="col-lg-6 my-3 text-center">
+
+          <h3>
+            Carta AM
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-carta-am"><i class="material-icons">info</i></a>
+          </h3>
+
+          <img src="imgs/sixpack-img-2.png" class="img-thumbnail" alt="...">
+
+          <!-- modal info carta am -->
+          <div class="modal fade" id="modal-carta-am" tabindex="-1" aria-labelledby="modal-label-carta-am" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-label-carta-am">Carta AM</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                  A carta AM representa as amplitudes móveis para observações
+                  consecutivas. A linha central na carta AM é a média de todas
+                  as amplitudes móveis. Os limites de controle, que são fixados
+                  a uma distância de 3 desvios padrão acima e abaixo da linha
+                  central, mostram a quantidade de variação esperada nas
+                  amplitudes móveis.<br>  
+                  <a target="_blank" href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/quality-and-process-improvement/capability-analysis/how-to/capability-sixpack/normal-capability-sixpack/interpret-the-results/all-statistics-and-graphs/graphs/">
+                    Clique aqui para ler mais sobre o gráfico
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ---- row para últimas observações e histograma de capacidade ---- -->
+
+      <div class="row">
+
+        <!-- --------------------- últimas observações --------------------- -->
+        
+        <div class="col-lg-6 my-3 text-center">
+
+          <h3>
+            Últimas Observações
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-ultimas-observacoes"><i class="material-icons">info</i></a>
+          </h3>
+
+          <img src="imgs/sixpack-img-3.png" class="img-thumbnail" alt="...">
+
+          <!-- modal info últimas observações -->
+          <div class="modal fade" id="modal-ultimas-observacoes" tabindex="-1" aria-labelledby="modal-label-ultimas-observacoes" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-label-ultimas-observacoes">Últimas Observações</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                  O gráfico dos Últimos 25 subgrupos mostra os pontos de dados
+                  para cada um dos últimos 25 subgrupos e exibe uma linha para a
+                  média do processo global.<br>
+                  <a target="_blank" href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/quality-and-process-improvement/capability-analysis/how-to/capability-sixpack/normal-capability-sixpack/interpret-the-results/all-statistics-and-graphs/graphs/">
+                    Clique aqui para ler mais sobre o gráfico
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ------------------ histograma de capacidade ------------------- -->
+
+        <div class="col-lg-6 my-3 text-center">
+
+          <h3>
+            Histograma de Capacidade
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-hist-de-capacidade"><i class="material-icons">info</i></a>
+          </h3>
+
+          <img src="imgs/sixpack-img-4.png" class="img-thumbnail" alt="...">
+
+          <!-- modal info histograma de capacidade -->
+          <div class="modal fade" id="modal-hist-de-capacidade" tabindex="-1" aria-labelledby="modal-label-hist-de-capacidade" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-label-hist-de-capacidade">Histograma de Capacidade</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                  O histograma mostra a capacidade de distribuição de seus dados
+                  amostrais. Cada barra no histograma representa a freqüência de
+                  dados dentro de um intervalo.As curvas dentro e globais no
+                  histograma são curvas de distribuição normais, que são geradas
+                  utilizando a média do processo e diferentes estimativas de
+                  variação do processo. A curva dentro do tracejado usa o desvio
+                  padrão dentro do subgrupo. A curva global contínua utiliza o
+                  desvio padrão global.<br>  
+                  <a target="_blank" href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/quality-and-process-improvement/capability-analysis/how-to/capability-sixpack/normal-capability-sixpack/interpret-the-results/all-statistics-and-graphs/graphs/">
+                    Clique aqui para ler mais sobre o gráfico
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- --- row para gráficos de probabilidade normal e de capacidade --- -->
+
+      <div class="row">
+
+        <!-- --------------- gráfico de probabilidade normal --------------- -->
+        
+        <div class="col-lg-6 my-3 text-center">
+
+          <h3>
+            Gráfico de Probabilidade Normal
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-grafico-de-prob-norm"><i class="material-icons">info</i></a>
+          </h3>
+
+          <img src="imgs/sixpack-img-5.png" class="img-thumbnail" alt="...">
+
+          <!-- modal info gráfico de probabilidade normal -->
+          <div class="modal fade" id="modal-grafico-de-prob-norm" tabindex="-1" aria-labelledby="modal-label-grafico-de-prob-norm" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-label-grafico-de-prob-norm">Gráfico de Probabilidade Normal</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                  Um gráfico de probabilidade exibe cada ponto de dados versus a
+                  percentagem de valores na amostra que são menores ou iguais ao
+                  ponto de dados.<br>
+
+                  Um gráfico de probabilidade inclui os seguintes componentes:
+
+                  <h6>Linha central:</h6>
+                  O percentil esperado a partir da distribuição com base em
+                  estimativas de parâmetros de máxima verossimilhança.
+  
+                  <h6>Linhas do limite de confiança:</h6>
+                  A linha curva à esquerda indica os limites inferiores dos
+                  intervalos de confiança para os percentis. A linha curva
+                  direita indica os limites superiores dos intervalos de
+                  confiança para os percentis.
+  
+                  <h6>Estatística de teste de Anderson-Darling e valor de p:</h6>
+                  Os resultados de um teste para determinar se os seus dados
+                  seguem a distribuição.
+                  <br>
+  
+                  <a target="_blank" href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/quality-and-process-improvement/capability-analysis/how-to/capability-sixpack/normal-capability-sixpack/interpret-the-results/all-statistics-and-graphs/graphs/">
+                    Clique aqui para ler mais sobre o gráfico
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- -------------------- gráfico de capacidade -------------------- -->
+
+        <div class="col-lg-6 my-3 text-center">
+
+          <h3>
+            Gráfico de Capacidade
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-grafico-de-capacidade"><i class="material-icons">info</i></a>
+          </h3>
+          
+          <img src="imgs/sixpack-img-6.png" class="img-thumbnail" alt="...">
+
+          <!-- modal info gráfico de capacidade -->
+          <div class="modal fade" id="modal-grafico-de-capacidade" tabindex="-1" aria-labelledby="modal-label-grafico-de-cpacidade" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-label-grafico-de-cpacidade">Gráfico de Capacidade</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                  O Gráfico de capacidade está localizado no canto inferior
+                  direito do Relatório Capability Sixpack normal. O gráfico de
+                  capacidade consiste em três intervalos:
+  
+                  <ul>
+
+                    <li>
+                      O intervalo entre/dentro representa o processo de
+                      tolerância potencial e é calculado por seis vezes o desvio
+                      padrão dentro do subgrupo.
+                    </li>
+  
+                    <li>
+                      O intervalo de tolerância global representa o processo
+                      real e é calculado por seis vezes o desvio padrão global.
+                    </li>
+  
+                    <li>
+                      O intervalo de especificação representa o intervalo entre
+                      os limites de especificação inferiores e superiores (LSL e
+                      USL).
+                    </li>
+
+                  </ul>
+  
+                  O centro do processo é mostrado pela marca de verificação
+                  dentro dos intervalos de dispersão do processo global e
+                  dentro. O alvo, se você tiver um, é mostrado pela marca de
+                  verificação dentro da dispersão da especificação (Especs).<br>
+  
+                  <a target="_blank" href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/quality-and-process-improvement/capability-analysis/how-to/capability-sixpack/normal-capability-sixpack/interpret-the-results/all-statistics-and-graphs/graphs/">
+                    Clique aqui para ler mais sobre o gráfico
+                  </a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <hr>
+
+      <!-- ----------------------- row para download ----------------------- -->
+
+      <div class="row text-center mb-3">
+        <div class="col-12">
+          <button type="button" class="btn btn-success" id="sixpack-download">Baixar imagens</button>
+        </div>
+      </div>
+
+      <!-- ------------------- row para botão de voltar -------------------- -->
+
+      <div class="row text-center">
+        <div class="col-12">
+          <a href="sixpack.html">
+            <button type="button" class="btn btn-primary">Voltar</button>
+          </a>
+        </div>
+      </div>
+
+    <!-- final do container da página -->
+    </div>
+
+    <!-- ------------------------------------------------------------------- -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  </body>
+
+</html>
