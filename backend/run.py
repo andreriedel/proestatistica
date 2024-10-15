@@ -4,6 +4,7 @@ from controllers.sixpack_controller import sixpack_controller
 from controllers.anova_controller import anova_controller
 from controllers.regression_controller import regression_controller
 from controllers.monte_controller import monte_controller
+from controllers.twovariance_controller import twovariance_controller
 
 app = Flask(__name__)
 CORS(app)  # Habilita CORS para todas as rotas.
@@ -12,6 +13,7 @@ sixpack_controller = sixpack_controller()
 anova_controller = anova_controller()
 regression_controller = regression_controller()
 monte_controller = monte_controller()
+twovariance_controller = twovariance_controller()
 
 @app.route('/sixpackgetsheets', methods=['POST'])
 def sixpack_get_sheets():
@@ -129,6 +131,39 @@ def monte_submit_form():
     form_data = request.json # Obtém o dado passado na requisição.
     data = monte_controller.generate_monte_carlo(form_data) # Gera a simulação de Monte Carlo.
     return jsonify(data) # Retorna a resposta do servidor.
+
+# ---------------------------------------------------------------------------- #
+
+@app.route('/twovariancegetsheets', methods=['POST'])
+def twovariance_get_sheets():
+    file_path = request.json['filePath'] # Obtém o dado passado na requisição.
+    sheets = twovariance_controller.get_sheets(file_path) # Obtém as planilhas do arquivo.
+    return jsonify(sheets) # Retorna a resposta do servidor.
+
+@app.route('/twovariancegetcols', methods=['POST'])
+def twovariance_get_cols():
+    sheet = request.json['sheet'] # Obtém o dado passado na requisição.
+    cols = twovariance_controller.get_cols(sheet) # Obtém as colunas da planilha.
+    return jsonify(cols) # Retorna a resposta do servidor.
+
+@app.route('/twovariancegetsubprocesses', methods=['POST'])
+def twovariance_get_subprocesses():
+    subprocesses_col = request.json['subprocessesCol'] # Obtém o dado passado na requisição.
+    subprocesses = twovariance_controller.get_subprocesses(subprocesses_col) # Obtém os subprocessos da coluna.
+    return jsonify(subprocesses) # Retorna a resposta do servidor.
+
+@app.route('/twovariancegetsubgroups', methods=['POST'])
+def twovariance_get_subgroups():
+    subgroups_col = request.json['subgroupsCol'] # Obtém o dado passado na requisição.
+    subprocess = request.json['subprocess'] # Obtém o dado passado na requisição.
+    subgroups = twovariance_controller.get_subgroups(subgroups_col, subprocess) # Obtém os subgrupos da coluna.
+    return jsonify(subgroups) # Retorna a resposta do servidor.
+
+@app.route('/twovariancesubmitform', methods=['POST'])
+def twovariance_submit_form():
+    form_data = request.json # Obtém o dado passado na requisição.
+    twovariance_controller.generate_twovariance(form_data) # Gera o teste de 2 variâncias.
+    return jsonify("OK")
 
 # ---------------------------------------------------------------------------- #
 
